@@ -51,7 +51,7 @@ export default function createAbstractNumberFormatInput(numberFormat) {
   function format(number) {
     if (number === null || number === undefined) return '';
     if (typeof number === 'string') return format(parse(number));
-    invariant(Number.isFinite(number), `Illegal number value: ${JSON.stringify(number)}`);
+    invariant(isFinite(number), `Illegal number value: ${JSON.stringify(number)}`);
     return addTrailingZeros(numberFormat.format(number));
   }
 
