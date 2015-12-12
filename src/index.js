@@ -13,6 +13,8 @@ export default class NumberFormatInput extends Component {
   }
 
   handleKeyEvent(handlerName, e) {
+    if (e.metaKey || e.altKey || e.ctrlKey) { return }
+
     const charCode = e.which || e.charCode || e.keyCode;
     const pasteText = e.clipboardData && e.clipboardData.getData('text') || '';
     const {value: inputValue} = this.refs.input;
