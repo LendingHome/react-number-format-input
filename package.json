@@ -1,5 +1,5 @@
 {
-  "name": "react-number-format-input",
+  "name": "lh-react-number-format-input",
   "version": "0.8.0",
   "description": "An input for numbers formatted by Intl.NumberFormat.",
   "main": "lib/index.js",
@@ -11,8 +11,8 @@
     "test:watch": "npm test -- --watch",
     "check": "npm run lint && npm run test",
     "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/react-number-format-input.js --config webpack.config.development.js",
-    "build:umd:min": "webpack src/index.js dist/react-number-format-input.min.js --config webpack.config.production.js",
+    "build:umd": "webpack src/index.js dist/lh-react-number-format-input.js --config webpack.config.development.js",
+    "build:umd:min": "webpack src/index.js dist/lh-react-number-format-input.min.js --config webpack.config.production.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "preversion": "npm run clean && npm run check",
     "version": "npm run build",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dbrans/react-number-format-input.git"
+    "url": "https://github.com/LendingHome/react-number-format-input"
   },
   "keywords": [
     "money",
@@ -61,7 +61,7 @@
     "rimraf": "^2.3.4",
     "webpack": "^1.9.6"
   },
-  "npmName": "react-number-format-input",
+  "npmName": "lh-react-number-format-input",
   "npmFileMap": [
     {
       "basePath": "/dist/",
