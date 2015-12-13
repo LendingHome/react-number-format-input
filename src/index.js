@@ -2,6 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import {getSelection, setSelection} from './domElementSelection';
 import abstractNumberInput from './abstract-number-format-input/index';
 
+const TAB = 9;
+const ENTER = 13;
+
 export default class NumberFormatInput extends Component {
   componentDidUpdate() {
     if (this.nextSelection) setSelection(this.refs.input, this.nextSelection);
@@ -16,6 +19,8 @@ export default class NumberFormatInput extends Component {
     if (e.metaKey || e.altKey || e.ctrlKey) { return }
 
     const charCode = e.which || e.charCode || e.keyCode;
+    if (charCode === TAB || charCode === ENTER) { return }
+
     const pasteText = e.clipboardData && e.clipboardData.getData('text') || '';
     const {value: inputValue} = this.refs.input;
     const selection = getSelection(this.refs.input);
