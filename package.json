@@ -1,6 +1,6 @@
 {
   "name": "lh-react-number-format-input",
-  "version": "0.8.3",
+  "version": "2.0.0",
   "description": "An input for numbers formatted by Intl.NumberFormat.",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
@@ -57,7 +57,7 @@
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
-    "react-addons-test-utils": "^0.14.1",
+    "react-addons-test-utils": "^15.1.0",
     "rimraf": "^2.3.4",
     "webpack": "^1.9.6"
   },
@@ -71,9 +71,10 @@
     }
   ],
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^15.1.0"
   },
   "dependencies": {
-    "invariant": "^2.1.2"
+    "invariant": "^2.1.2",
+    "lodash.isfinite": "^3.3.1"
   }
 }

@@ -1,5 +1,6 @@
 import escapeRegExp from './escapeRegExp';
 import invariant from 'invariant';
+import isFinite from 'lodash.isfinite';
 
 function assertZeroOrOneDecimalChar(str, decimalChar) {
   if (!decimalChar) return;
