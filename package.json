@@ -57,11 +57,11 @@
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
-    "react-addons-test-utils": "^15.1.0",
+    "react-addons-test-utils": "^0.14.3",
     "rimraf": "^2.3.4",
     "webpack": "^1.9.6"
   },
-  "npmName": "lh-react-number-format-input",
+  "npmName": "@lendinghome/react-number-format-input",
   "npmFileMap": [
     {
       "basePath": "/dist/",
@@ -71,7 +71,7 @@
     }
   ],
   "peerDependencies": {
-    "react": "^15.1.0"
+    "react": "^0.14.8"
   },
   "dependencies": {
     "invariant": "^2.1.2",
