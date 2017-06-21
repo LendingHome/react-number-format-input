@@ -109,9 +109,9 @@ export default function createAbstractNumberFormatInput(numberFormat) {
     return {selection: {start: position, end: position}, value: nextValue, preventDefault, stopPropagation, clipboardText};
   }
 
-  function handleKeyPress({charCode, metaKey, altKey, ctrlKey, selection, value, maxLength}) {
+  function handleKeyPress({charData, charCode, metaKey, altKey, ctrlKey, selection, value, maxLength}) {
     const {start, end} = selection;
-    const char = String.fromCharCode(charCode);
+    const char = charCode !== undefined ? String.fromCharCode(charCode) : charData;
     const oldValue = parse(value);
     let nextValue = oldValue;
     let [preventDefault, stopPropagation] = [false, false];

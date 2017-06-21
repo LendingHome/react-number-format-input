@@ -7,7 +7,13 @@ const ENTER = 13;
 
 export default class NumberFormatInput extends Component {
   componentDidUpdate() {
-    if (this.nextSelection) setSelection(this.refs.input, this.nextSelection);
+    if (this.nextSelection) {
+      const input = this.refs.input;
+      const nextSelection = this.nextSelection;
+      // NOTE: Need to wait for the UI thread to catch up before setting selection in some environments
+      // *cough* *cough* Android software keyboards *cough*
+      setTimeout(() => setSelection(input, nextSelection), 0);
+    }
     delete this.nextSelection;
   }
 
@@ -20,6 +26,9 @@ export default class NumberFormatInput extends Component {
 
     const charCode = e.which || e.charCode || e.keyCode;
     if (charCode === TAB || charCode === ENTER) { return }
+    // BeforeInput events (for software keyboards) don't have charCode, but do have the character type in
+    // a `data` property
+    const charData = e.data;
 
     const pasteText = e.clipboardData && e.clipboardData.getData('text') || '';
     const {value: inputValue} = this.refs.input;
@@ -27,7 +36,7 @@ export default class NumberFormatInput extends Component {
     const { metaKey, altKey, ctrlKey } = e;
     const {maxLength, value, onChange} = this.props;
 
-    const next = this.getAbstractNumInput()[handlerName]({charCode, metaKey, altKey, ctrlKey, value: inputValue, selection, maxLength, pasteText});
+    const next = this.getAbstractNumInput()[handlerName]({charData, charCode, metaKey, altKey, ctrlKey, value: inputValue, selection, maxLength, pasteText});
 
     if (next.value !== value) onChange(next.value);
     this.nextSelection = next.selection;
@@ -40,7 +49,13 @@ export default class NumberFormatInput extends Component {
 
   eventHandlers() {
     if (!this._eventHandlers) {
+      // NOTE: Android software keyboards do not trigger KeyPress events (the event has actually been
+      // deprecated in the W3C Dom Level 3 Spec: https://www.w3.org/TR/DOM-Level-3-Events/#event-type-keypress
+      //
+      // BeforeInput events replace the absent KeyPress events on android devices (though these events aren't
+      // uniformly supported, so we're still using both)
       this._eventHandlers = {
+        onBeforeInput: this.handleKeyEvent.bind(this, 'handleKeyPress'),
         onKeyPress: this.handleKeyEvent.bind(this, 'handleKeyPress'),
         onKeyDown: this.handleKeyEvent.bind(this, 'handleKeyDown'),
         onCut: this.handleKeyEvent.bind(this, 'handleCut'),
