@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component } from 'react';
+import { string, number, shape, func, oneOfType } from 'prop-types';
 import {getSelection, setSelection} from './domElementSelection';
 import abstractNumberInput from './abstract-number-format-input/index';
 
@@ -75,16 +76,6 @@ export default class NumberFormatInput extends Component {
   }
 }
 
-NumberFormatInput.PropTypes = {
-  value: PropTypes.number,
-  numberFormat: PropTypes.shape({
-    format: PropTypes.func.isRequired,
-    resolvedOptions: PropTypes.func.isRequired,
-  }),
-  onChange: PropTypes.func,
-  maxLength: PropTypes.number,
-};
-
 NumberFormatInput.defaultProps = {
   maxLength: undefined,
   numberFormat: new Intl.NumberFormat('en-US', {}),
@@ -92,13 +83,13 @@ NumberFormatInput.defaultProps = {
 };
 
 NumberFormatInput.propTypes = {
-  maxLength: PropTypes.number,
+  maxLength: number,
   // An instance of Intl.NumberFormat.
-  numberFormat: PropTypes.shape({
-    format: PropTypes.func.isRequired,
-    resolvedOptions: PropTypes.func.isRequired,
+  numberFormat: shape({
+    format: func.isRequired,
+    resolvedOptions: func.isRequired,
   }),
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  onChange: func,
+  onBlur: func,
+  value: oneOfType([number, string]),
 };

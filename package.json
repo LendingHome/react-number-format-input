@@ -1,6 +1,6 @@
 {
   "name": "@lendinghome/react-number-format-input",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "An input for numbers formatted by Intl.NumberFormat.",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
@@ -71,10 +71,11 @@
     }
   ],
   "peerDependencies": {
-    "react": "^0.14.8"
+    "react": "^16.0.0"
   },
   "dependencies": {
     "invariant": "^2.1.2",
-    "lodash.isfinite": "^3.3.1"
+    "lodash.isfinite": "^3.3.1",
+    "prop-types": "^15.7.2"
   }
 }
