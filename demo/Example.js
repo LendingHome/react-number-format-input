@@ -1,5 +1,6 @@
 import NumberFormatInput from '../src';
-import React, {Component, PropTypes} from 'react';
+import React, {Component } from 'react';
+import { string, shape, func, number, any } from 'prop-types';
 
 const simpleFormat = new Intl.NumberFormat('en-US');
 
@@ -24,12 +25,12 @@ export default class Example extends Component {
 }
 
 Example.propTypes = {
-  description: PropTypes.string.isRequired,
-  numberFormat: PropTypes.shape({
-    format: PropTypes.func.isRequired,
-    resolvedOptions: PropTypes.func.isRequired,
+  description: string.isRequired,
+  numberFormat: shape({
+    format: func.isRequired,
+    resolvedOptions: func.isRequired,
   }).isRequired,
-  defaultValue: PropTypes.number,
-  allowNull: PropTypes.any,
-  placeholder: PropTypes.string,
+  defaultValue: number,
+  allowNull: any,
+  placeholder: string,
 };
