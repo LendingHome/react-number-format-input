@@ -1,0 +1,23 @@
+version: 1
+service:
+  name: react-number-format-input
+  description: React component to support various number formats in form inputs
+  lifecycle: maintenance
+  tier: tier_2
+  owner: back_office_experience_box
+  language: javascript
+  aliases:
+  tools:
+    - name: Jira
+      category: incidents
+      url: https://lendinghome.atlassian.net/jira/software/c/projects/BOX/issues
+      environment: Production
+    - name: SonarQube
+      category: metrics
+      url: https://sonarqube.lendinghome.net/dashboard?id=react-number-format-input
+      environment: Production
+  tags:
+    - key: type
+      value: library
+    - key: sonarqube
+      value: react-number-format-input
