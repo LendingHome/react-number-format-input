@@ -1,23 +1,50 @@
 version: 1
 service:
   name: react-number-format-input
-  description: React component to support various number formats in form inputs
   lifecycle: maintenance
   tier: tier_2
+  product:
   owner: back_office_experience_box
+  system:
   language: javascript
+  framework:
+  description: React component to support various number formats in form inputs
   aliases:
-  tools:
-    - name: Jira
-      category: incidents
-      url: https://lendinghome.atlassian.net/jira/software/c/projects/BOX/issues
-      environment: Production
-    - name: SonarQube
-      category: metrics
-      url: https://sonarqube.lendinghome.net/dashboard?id=react-number-format-input
-      environment: Production
+    - react-number-format-input
   tags:
-    - key: type
-      value: library
-    - key: sonarqube
-      value: react-number-format-input
+  - key: fork
+    value: 'true'
+  - key: sonarqube
+    value: react-number-format-input
+  - key: type
+    value: library
+  repositories:
+  - name: LendingHome/react-number-format-input
+    path: "/"
+    provider: github
+  tools:
+  - name: Jira
+    category: issue_tracking
+    url: https://lendinghome.atlassian.net/jira/software/c/projects/BOX/issues
+    environment: Production
+  - name: Jira
+    category: incidents
+    url: https://lendinghome.atlassian.net/jira/software/c/projects/BOX/issues
+    environment: Production
+  - name: SonarQube
+    category: metrics
+    url: https://sonarqube.lendinghome.net/dashboard?id=react-number-format-input
+    environment: Production
+  - name: Confluence
+    category: wiki
+    url: https://lendinghome.atlassian.net/wiki/spaces/TD/pages/363200768/react-number-format-input
+    environment: Production
+  dependencies:
+  alert_sources:
+  properties:
+    fork: true
+    generated_code: false
+    monorepo: false
+    server-side_javascript: false
+    type: library
+
